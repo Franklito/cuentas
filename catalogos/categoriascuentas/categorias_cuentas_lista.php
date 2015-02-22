@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <!-- inicio 17/02/2015 -->
 <?php
-include_once './CategoriasCuentas.php';
+include_once '../../config.php';
+include_once INICIO.'catalogos/MetodosCatalogos.php';
+include_once INICIO.'catalogos/categoriascuentas/CategoriasCuentas.php';
 
 $cat_cuenta = new CategoriasCuentas();
 
@@ -11,7 +13,7 @@ print_r($cat_cuenta);
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?php echo INIIO; ?>css/bootstrap.min.css">
         <title></title>
     </head>
     <body>
@@ -21,7 +23,7 @@ print_r($cat_cuenta);
                 <div class="span3 well-sm"></div>
                 <div class="span3 well">
                     <div class="navbar navbar-inner block-header">
-                        <a href="categorias_cuentas_crear.php" class="btn btn-success">Crear Nueva Categoría de Cuenta</a>
+                        <a href="<?php echo INICIO;?>categorias_cuentas_crear.php" class="btn btn-success">Crear Nueva Categoría de Cuenta</a>
                     </div>
                     <div class="block-content collapse in">
                         <table class="table table-striped table-bordered">
@@ -49,7 +51,7 @@ print_r($cat_cuenta);
                 </div>
             </div>
         </div>
-        <script src="../../js/jquery-2.1.3.min.js"></script>
-        <script src="../../js/bootstrap.min.js"></script>
+        <script src="<?php echo INICIO;?>js/jquery-2.1.3.min.js"></script>
+        <script src="<?php echo INICIO;?>js/bootstrap.min.js"></script>
     </body>
 </html>

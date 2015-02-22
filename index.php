@@ -1,3 +1,6 @@
+<?php
+include_once './config.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,7 +9,7 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
     </head>
     <body>
-         <?php include_once './menu.php'; ?>
+         <?php include_once (INICIO.'menu.php'); ?>
         <script src="js/jquery-2.1.3.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
     </body>
