@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <!-- inicio 17/02/2015 -->
-<?php
+<!--    <td>" . '<a href="categorias_cuentas_procesar.php?idcategorias=' . $id . '">Editar</a> ' . "<td> 
+    <td>" . '<a href="categorias_cuentas_procesar.php?idcategorias=' . $id . '">Eliminar</a>' . "</td>-->
+    <?php
 include_once './CategoriasCuentas.php';
 
 $cat_cuenta = new CategoriasCuentas();
 
-$cat_cuenta->leerDatos();
-print_r($cat_cuenta);
+$cate=$cat_cuenta->leerDatos();
+print_r($cate);
 ?>
 <html>
     <head>
@@ -32,15 +34,14 @@ print_r($cat_cuenta);
                                 <th>Acción</th>
                             </tr>
                             <?php
-                            foreach ($cat_cuenta as $cat) {
+                            foreach ($cate as $cat) {
                                 $id = $cat['idcategorias'];
                                 echo"
                         <tr>
                         <td>" . $cat['idcategorias'] . "</td>
                         <td>" . $cat['categoria'] . "</td>
                         <td>" . $cat['nombre'] . "</td>
-                        <td>" . '<a href="categorias_cuentas_procesar.php?idcategorias=' . $id . '">Editar</a> ' . "<td>
-                        <td>" . '<a href="categorias_cuentas_procesar.php?idcategorias=' . $id . '">Eliminar</a>' . "</td>
+                        <td>" . '<a href="categorias_cuentas_procesar.php?idcategorias=' . $id . '">Editar</a> -- <a href="categorias_cuentas_procesar.php?idcategorias=' . $id . '">Eliminar</a>' . "</td>
                         </tr>";
                             }
                             ?>

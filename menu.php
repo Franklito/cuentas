@@ -11,12 +11,14 @@
     </button>
     <a class="navbar-brand" href="#">Logotipo</a>
   </div>
- 
+    <?php  
+
+  ?>
   <!-- Agrupar los enlaces de navegación, los formularios y cualquier
        otro elemento que se pueda ocultar al minimizar la barra -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="index.php">Inicio</a></li>
+        <li class="active"><a href="index.php">Inicio</a></li>
       
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -39,7 +41,7 @@
         <ul class="dropdown-menu">
           <li><a href="lista_catalogo_cuentas.php">Catálogo de Cuentas</a></li>
           <li><a href="lista_grupos_cuentas.php">Grupos de Cuentas</a></li>
-          <li><a href="catalogos/categoriascuentas/categorias_cuentas_lista.php">Categorías de Cuentas</a></li>
+          <li><a href= "catalogos/categoriascuentas/categorias_cuentas_lista.php" >Categorías de Cuentas</a></li>
           <li class="divider"></li>
           <li><a href="#">Acción #4</a></li>
         </ul>
