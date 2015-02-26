@@ -11,6 +11,7 @@ class CategoriasCuentas implements MetodosCatalogos {
 
     private $idcategoriacuenta;
     private $categoriacuenta;
+    private $idestructurabase;
 
     public function __construct() {
         
@@ -31,17 +32,40 @@ class CategoriasCuentas implements MetodosCatalogos {
     public function setCategoriacuenta($categoriacuenta) {
         $this->categoriacuenta = $categoriacuenta;
     }
+    
+    function getIdestructurabase() {
+        return $this->idestructurabase;
+    }
 
-    public function buscarPorId() {
+    function setIdestructurabase($idestructurabase) {
+        $this->idestructurabase = $idestructurabase;
+    }
+    
+    public function buscarPorId($id) {
         
     }
 
-    public function crearRegistro() {
-        
+    public function crearRegistro($categoria) {
+        echo 'Estoy en crear registro';
+        $conecta = Conexion::open();
+        try {
+            $consulta_categorias_cuentas_crear = "INSERT INTO categoriascuentas (categoriacuenta,"
+                    . "idestructurabase) Value($categoria->categoriacuenta,$categoria->idestructurabase)";
+            $conecta->query($consulta_categorias_cuentas_crear);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+        $conecta->close();
     }
 
-    public function editarRegistro() {
-        
+    public function editarRegistro($categoria) {
+        $conecta = Conexion::open();
+        try {
+            $consulta_categorias_cuentas = "UPTADE categoriascuentas SET categoria";
+            $lista_categorias_cuentas = $conecta->query($consulta_categorias_cuentas);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
     }
 
     public function leerDatos() {
@@ -49,12 +73,14 @@ class CategoriasCuentas implements MetodosCatalogos {
         try {
             $consulta_categorias_cuentas = "SELECT * FROM categorias_cuentas_view";
             $lista_categorias_cuentas = $conecta->query($consulta_categorias_cuentas);
-            while ($fila_categoria_cuenta = $lista_categorias_cuentas->fetch_array(MYSQLI_ASSOC)) {
+            $resultado = $lista_categorias_cuentas->fetch_array(MYSQLI_BOTH);
+            while ($fila_categoria_cuenta = $resultado) {
                 $this->categoriacuenta[] = $fila_categoria_cuenta;
             }
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
+        $conecta->close();
         return $this->categoriacuenta;
     }
 

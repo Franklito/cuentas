@@ -7,7 +7,7 @@
 interface MetodosCatalogos{
     
     public function leerDatos();
-    public function crearRegistro();
-    public function editarRegistro();
-    public function buscarPorId();
+    public function crearRegistro($clase);
+    public function editarRegistro($clase);
+    public function buscarPorId($id);
 }
