@@ -1,4 +1,4 @@
 <?php 
-define("INICIO", "http://localhost/cuentas-oo/");
+define("INICIO", "http://localhost/Proyects/cuentas/");
 
      

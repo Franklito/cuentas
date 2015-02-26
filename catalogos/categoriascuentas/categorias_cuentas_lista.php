@@ -4,8 +4,8 @@
 include_once './CategoriasCuentas.php';
 
 $cat_cuenta = new CategoriasCuentas();
-
 $cate = $cat_cuenta->leerDatos();
+         
 ?>
 <html>
     <head>
@@ -22,7 +22,7 @@ $cate = $cat_cuenta->leerDatos();
                     <div class="navbar navbar-inner block-header">
                         <a href="<?php echo INICIO;?>catalogos/categoriascuentas/categorias_cuentas_crear.php" class="btn btn-success">Crear Nueva Categoría de Cuenta</a>
                     </div>
-                    <div class="block-content collapse in">
+                    <div class="block-content collapse in"> 
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>ID</th>
@@ -31,6 +31,8 @@ $cate = $cat_cuenta->leerDatos();
                                 <th>Acción</th>
                             </tr>
                             <?php
+                            
+                            if(!empty($cate)){
                             foreach ($cate as $cat) {
                                 $id = $cat['idcategorias'];
                                 echo"
@@ -38,17 +40,22 @@ $cate = $cat_cuenta->leerDatos();
                         <td>" . $cat['idcategorias'] . "</td>
                         <td>" . $cat['categoria'] . "</td>
                         <td>" . $cat['nombre'] . "</td>
-                        <td>" . '<a href="<?php echo INICIO;?>catalogos/categoriascuentas/categorias_cuentas_procesar.php?idcategorias=' . $id . '">Editar</a> ' . "<td>
-                        <td>" . '<a href="<?php echo INICIO;?>catalogos/categoriascuentas/categorias_cuentas_procesar.php?idcategorias=' . $id . '">Inactiva</a>' . "</td>
+                        <td>" . '<a href="categorias_cuentas_editar.php?idcategorias='. $id .'">Editar</a> ' . "<td>
+                        <td>" . '<a id="desactivar" href="categorias_cuentas_procesar.php?idcategorias='. $id .'&operacion=inactivar">Inactiva</a>' . "</td>
                         </tr>";
-                            }
-                            ?>
+                            }}else{?>
+                               
                         </table>
                     </div>
+                     <?php echo '<h4>No se encontraron categorias de cuentas</h4>';
+                            }
+                                                       
+                            ?>
                 </div>
             </div>
         </div>
         <script src="<?php echo INICIO;?>js/jquery-2.1.3.min.js"></script>
         <script src="<?php echo INICIO;?>js/bootstrap.min.js"></script>
+        <script src="<?php echo INICIO;?>js/categoria_cuentas_inactivar.js"></script>
     </body>
 </html>
