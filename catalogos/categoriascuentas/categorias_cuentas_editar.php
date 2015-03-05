@@ -2,15 +2,15 @@
 include_once './CategoriasCuentas.php';
 include_once '../../config.php';
 
-$id = filter_input(INPUT_GET, 'idcategorias');
+$id = filter_input(INPUT_GET, 'idcategoriacuenta');
 
 $cat_cuenta = new CategoriasCuentas();
 $cate = $cat_cuenta->buscarPorId($id);
 
 foreach ($cate as $cat) {
-     $valor_nombre_categoria = $cat['categoria'];
+     $valor_nombre_categoria = $cat['categoriacuenta'];
      $valor_estructura_base = $cat['nombre'];
-     $id_categoria = $cat['idcategorias'];                           
+     $id_categoria = $cat['idcategoriacuenta'];                           
 }
 
 ?>
@@ -33,11 +33,11 @@ foreach ($cate as $cat) {
                             <input type="text" value="<?php echo $id_categoria; ?>" style="display:none" name="id_editar"></input>
                         <table class="table table-striped table-bordered">
                             <tr>
-                                <th>Nombre de la categoria</th>
-                                <th><input type="text" name="nombre_categoria" placeholder=<?php echo $valor_nombre_categoria; ?>></th>
+                                <th>Nombre de Categoría</th>
+                                <th><input type="text" name="nombre_categoria" value=<?php echo $valor_nombre_categoria; ?>></th>
                             </tr>
                             <tr>
-                                <th>Clasificacion Principal</th>
+                                <th>Clasificación Principal</th>
                                 <th>
                                     <span>Actual: <?php echo $valor_estructura_base.'|';?></span>
                                     <span>Nuevo: </span>

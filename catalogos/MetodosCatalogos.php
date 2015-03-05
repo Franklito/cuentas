@@ -10,4 +10,7 @@ interface MetodosCatalogos{
     public function crearRegistro($clase);
     public function editarRegistro($clase);
     public function buscarPorId($id);
+    public function eliminar($id);
+    public function activar($id);
+    public function inactivar($id);
 }

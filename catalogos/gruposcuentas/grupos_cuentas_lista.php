@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- inicio 17/02/2015 -->
 <?php
-include_once './CategoriasCuentas.php';
+include_once './GruposCuentas.php';
+include_once '../../config.php';
 
-$cat_cuenta = new CategoriasCuentas();
+$gru_cuenta = new GruposCuentas();
 
-$cate = $cat_cuenta->leerDatos();
+$grup = $gru_cuenta->leerDatos();
 ?>
 <html>
     <head>
@@ -20,29 +20,32 @@ $cate = $cat_cuenta->leerDatos();
                 <div class="span3 well-sm"></div>
                 <div class="span3 well">
                     <div class="navbar navbar-inner block-header">
-                        <a href="categorias_cuentas_crear.php" class="btn btn-success">Crear Nueva Categoría de Cuenta</a>
+                        <a href="grupos_cuentas_crear.php" class="btn btn-success">Crear Nuevo Grupo de Cuenta</a>
                     </div>
                     <div class="block-content collapse in">
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>ID</th>
+                                <th>Grupo</th>
+                                <th>Nivel</th>
+                                <th>Grupo Superior</th>
                                 <th>Categoría</th>
-                                <th>Clasificación Principal</th>
                                 <th>Acción</th>
                             </tr>
                             <?php
-                            if (!isset($cate)) {
+                            if (!isset($grup)) {
                                 echo '<table><tr><th><h1><center>No hay datos</center></h1></th></tr></table>';
                             } else {
-                                foreach ($cate as $cat) {
-                                    $id = $cat['idcategoriacuenta'];
+                                foreach ($grup as $gru) {
+                                    $id = $gru['idgruposcuentas'];
                                     echo"
                         <tr>
-                        <td>" . $cat['idcategoriacuenta'] . "</td>
-                        <td>" . $cat['categoriacuenta'] . "</td>
-                        <td>" . $cat['nombre'] . "</td>
-                        <td>" . '<a href="categorias_cuentas_editar.php?idcategoriacuenta=' . $id . '">Editar</a> -- '
-                              . '<a href="categorias_cuentas_procesar.php?idcategoriacuenta=' . $id . '&operacion=desactivar">Inactivar</a>' . "</td>
+                        <td>" . $gru['idgruposcuentas'] . "</td>
+                        <td>" . $gru['grupo'] . "</td>
+                        <td>" . $gru['nivel'] . "</td>
+                        <td>" . $gru['gruposuperior'] . "</td>
+                        <td>" . $gru['categoriacuenta'] . "</td>
+                        <td>" . '<a href="grupos_cuentas_procesar.php?idgruposcuentas=' . $id . '">Editar</a> -- <a href="grupos_cuentas_procesar.php?idgruposcuentas=' . $id . '&operacion=desactivar">Inactivar</a>' . "</td>
                         </tr>";
                                 }
                             }
